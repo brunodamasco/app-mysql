@@ -1,0 +1,17 @@
+<ion-header>
+  <ion-toolbar color="success">
+    <ion-title>Usuários</ion-title>
+    <ion-buttons slot="start" (click)="usuarios()">
+      <ion-icon slot="start" name="arrow-back"></ion-icon>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item>
+    <ion-label position="floating">
+      Nome
+    </ion-label>
+    <ion-input type="text" [(ngModel)]="nome"></ion-input>
+  </ion-item>
+</ion-content>
