@@ -9,6 +9,36 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+  <ion-row class="ion-padding-horizontal">
+    <ion-col size="9">
+      <ion-input [(ngModel)]="nome" type="search" placeholder="Buscar"></ion-input>
+    </ion-col>
+    <ion-col>
+      <ion-buttons>
+        <ion-button (click)="onClick()">
+          <ion-icon slot="end" name="search"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+    </ion-col>
+  </ion-row>
 
+
+<ion-content class="ion-padding">
+
+    <ion-list>
+      <ion-item-sliding *ngFor="let usuario of usuarios">
+        <ion-item-options side="start">
+          <ion-item-option (click)="editar(usuario.id, usuario.nome, usuario.usuario, usuario.senha, usuario.nivel)">Editar
+          </ion-item-option>
+        </ion-item-options>
+        <ion-list>
+          <ion-item lines="none">{{ usuario.nome }} - {{ usuario.nivel }}</ion-item>
+        </ion-list>
+        <ion-item-options side="end">
+          <ion-item-option (click)="excluir(usuario.id)" color="danger">Excluir
+          </ion-item-option>
+        </ion-item-options>
+
+      </ion-item-sliding>
+    </ion-list>
 </ion-content>

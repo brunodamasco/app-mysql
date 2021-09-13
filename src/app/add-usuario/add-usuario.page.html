@@ -1,17 +1,45 @@
 <ion-header>
-  <ion-toolbar color="success">
-    <ion-title>Usuários</ion-title>
-    <ion-buttons slot="start" (click)="usuarios()">
-      <ion-icon slot="start" name="arrow-back"></ion-icon>
-    </ion-buttons>
-  </ion-toolbar>
+    <ion-toolbar color="success">
+        <ion-title>Usuários</ion-title>
+        <ion-buttons slot="start" (click)="usuarios()">
+            <ion-icon slot="start" name="arrow-back"></ion-icon>
+        </ion-buttons>
+    </ion-toolbar>
 </ion-header>
 
-<ion-content>
-  <ion-item>
-    <ion-label position="floating">
-      Nome
-    </ion-label>
-    <ion-input type="text" [(ngModel)]="nome"></ion-input>
-  </ion-item>
+<ion-content class="ion-padding">
+    <ion-item>
+        <ion-label position="floating">
+            Nome
+        </ion-label>
+        <ion-input type="text" [(ngModel)]="nome"></ion-input>
+    </ion-item>
+    <ion-item>
+        <ion-label position="floating">
+            Usuário
+        </ion-label>
+        <ion-input type="email" [(ngModel)]="usuario"></ion-input>
+    </ion-item>
+    <ion-item>
+        <ion-label position="floating">
+            Senha
+        </ion-label>
+        <ion-input type="password" [(ngModel)]="senha"></ion-input>
+    </ion-item>
+
+    <ion-item>
+        <ion-label position="floating">
+            Nível
+        </ion-label>
+        <ion-input type="text" [(ngModel)]="nivel"></ion-input>
+    </ion-item>
+
+    <ion-button *ngIf="!id" (click)="cadastrar()" color="success" expand="block">
+        Salvar
+    </ion-button>
+
+    <ion-button *ngIf="id" (click)="editar()" color="warning" expand="block">
+        Editar
+    </ion-button>
+
 </ion-content>
