@@ -10,7 +10,7 @@ import { Post } from 'src/services/post';
 export class UsuariosPage implements OnInit {
 
   usuarios: any = [];
-  limit: number = 15;
+  limit: number = 10;
   start: number = 0;
   nome: string = "";
 
@@ -32,6 +32,7 @@ export class UsuariosPage implements OnInit {
   carregar() {
 
     return new Promise(resolve => {
+      this.usuarios = [];
       let dados = {
         requisicao: 'listar',
         nome: this.nome,
@@ -40,13 +41,57 @@ export class UsuariosPage implements OnInit {
       };
 
       this.provider.dadosApi(dados, 'api.php').subscribe(data => {
-        for (let usuario of data['result']) {
-          this.usuarios.push(usuario);
+        if (data['result'] == '0') {
+          this.ionViewWillEnter();
+        } else {
+          for (let usuario of data['result']) {
+            this.usuarios.push(usuario);
+          }
         }
         resolve(true);
       })
     });
+  }
 
+  editar(id, nome, usuario, senha, nivel) {
+    this.router.navigate(['/add-usuario/' + id + '/' + nome + '/' + usuario + '/' + senha + '/' + nivel]);
+  }
+
+  mostrar(id, nome, usuario, senha, nivel) {
+    this.router.navigate(['/mostrar-usuario/' + id + '/' + nome + '/' + usuario + '/' + senha + '/' + nivel]);
+  }
+
+  excluir(id) {
+    return new Promise(resolve => {
+      let dados = {
+        requisicao: 'excluir',
+        id: id,
+      };
+
+      this.provider.dadosApi(dados, 'api.php').subscribe(data => {
+        this.ionViewWillEnter();
+      })
+    });
+  }
+
+  //atualizar o list view
+  doRefresh(event) {
+    setTimeout(() => {
+      this.ionViewWillEnter();
+      event.target.complete();
+    }, 500);
+  }
+
+
+  //barra de rolagem
+  loadData(event) {
+    this.start += this.limit;
+
+    setTimeout(() => {
+      this.carregar().then(() => {
+        event.target.complete();
+      });
+    }, 500);
   }
 
 }

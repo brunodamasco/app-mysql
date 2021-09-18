@@ -26,3 +26,12 @@ ion-menu-button {
 #container a {
   text-decoration: none;
 }
+
+ion-content ion-toolbar {
+  --background: transparent;
+}
+
+.titulo-home {
+  font-size: 15px;
+  color: #fff;
+}

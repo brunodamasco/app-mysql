@@ -1,9 +1,30 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>mostrarUsuario</ion-title>
+  <ion-toolbar color="success">
+    <ion-buttons slot="start" (click)="usuarios()">
+      <ion-button>
+        <ion-icon name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Dados do Usuário</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+
+  <ion-card color="tertiary">
+    <ion-card-header>
+    <ion-card-subtitle>
+      Usuário:
+    </ion-card-subtitle>
+    <ion-card-title>
+      {{nome}}
+    </ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      Email: {{usuario}} <br>
+      Nível: {{nivel}} <br>
+    </ion-card-content>
+  </ion-card>
 
 </ion-content>

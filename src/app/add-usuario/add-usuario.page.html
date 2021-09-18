@@ -1,6 +1,6 @@
 <ion-header>
     <ion-toolbar color="success">
-        <ion-title>Usuários</ion-title>
+        <ion-title>Cadastrar Usuários</ion-title>
         <ion-buttons slot="start" (click)="usuarios()">
             <ion-icon slot="start" name="arrow-back"></ion-icon>
         </ion-buttons>
@@ -24,14 +24,18 @@
         <ion-label position="floating">
             Senha
         </ion-label>
-        <ion-input type="password" [(ngModel)]="senha"></ion-input>
+        <ion-input [(ngModel)]="senha"></ion-input>
     </ion-item>
 
     <ion-item>
-        <ion-label position="floating">
-            Nível
-        </ion-label>
-        <ion-input type="text" [(ngModel)]="nivel"></ion-input>
+        <ion-label>Nível</ion-label>
+        <ion-select placeholder="Selecione" [(ngModel)]="nivel">
+        <ion-select-option value="Administrador">Administrador</ion-select-option>
+        <ion-select-option value="Farmacêutico">Farmacêutico</ion-select-option>
+        <ion-select-option value="Médico">Médico</ion-select-option>
+        <ion-select-option value="Recepcionista">Recepcionista</ion-select-option>
+        <ion-select-option value="Tesoureiro">Tesoureiro</ion-select-option>
+        </ion-select>
     </ion-item>
 
     <ion-button *ngIf="!id" (click)="cadastrar()" color="success" expand="block">
